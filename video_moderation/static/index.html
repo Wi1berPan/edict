@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Moderation Agent Lab</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <h1>Video Moderation Agent Lab</h1>
+        <p>Risk-domain subagents, feedback learning, benchmark tracking, and traceable analysis.</p>
+        <p class="developer">developer: @panyiheng</p>
+      </div>
+      <div class="top-actions">
+        <span id="providerBadge" class="badge">provider</span>
+        <button id="themeBtn" class="ghost">Light Mode</button>
+        <button id="refreshBtn" class="ghost">Refresh</button>
+      </div>
+    </header>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="workspace">
+      <aside class="panel">
+        <div class="panel-head">
+          <h2>Videos</h2>
+          <select id="providerSelect" class="provider-select">
+            <option value="local">Local</option>
+            <option value="doubao">Doubao Ark</option>
+          </select>
+          <button id="seedBtn">Analyze Selected</button>
+        </div>
+        <div id="videoList" class="video-list"></div>
+        <form id="videoForm" class="form">
+          <h3>Add Development Case</h3>
+          <input name="title" placeholder="Title" required />
+          <input name="source_url" placeholder="Optional public video URL for Doubao vision" />
+          <textarea name="transcript" placeholder="Transcript"></textarea>
+          <textarea name="ocr_texts" placeholder="OCR texts, one per line"></textarea>
+          <textarea name="grounding" placeholder="Grounding labels, one per line"></textarea>
+          <button type="submit">Create Video Case</button>
+        </form>
+        <form id="uploadForm" class="form">
+          <h3>Upload Real Video</h3>
+          <input name="title" placeholder="Display title" />
+          <input name="source_url" placeholder="Optional public URL, preferred for direct video input" />
+          <input name="file" type="file" accept="video/*" required />
+          <textarea name="transcript" placeholder="Optional transcript or ASR text"></textarea>
+          <button type="submit">Upload Video</button>
+        </form>
+      </aside>
+
+      <section class="panel main-panel">
+        <div class="panel-head">
+          <h2>Latest Analysis</h2>
+          <button id="evalBtn" class="ghost">Run Benchmark</button>
+        </div>
+        <div id="runDetail" class="run-detail empty">Select a video and run analysis.</div>
+      </section>
+    </section>
+
+    <section class="workspace bottom">
+      <section class="panel">
+        <div class="panel-head"><h2>Subagents</h2></div>
+        <div id="domainList" class="domain-list"></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><h2>Benchmark</h2></div>
+        <div id="benchmarkBox" class="benchmark-box"></div>
+      </section>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
